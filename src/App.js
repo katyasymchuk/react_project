@@ -1,4 +1,4 @@
-// </ff>
+
 import './App.css';
 
 import {MoviesPage} from "./pages";
@@ -6,7 +6,6 @@ import {MoviesPage} from "./pages";
 import {Route, Routes} from "react-router-dom";
 import {MainLayout} from "./layouts";
 import {MovieInfo} from "./components/MovieInfo/MovieInfo";
-import {FindGenre} from "./components/FindGenre/FindGenre";
 import {GenrePage} from "./pages/GenrePage/GenrePage";
 import {createContext, useState} from "react";
 import ReactSwitch from "react-switch";
