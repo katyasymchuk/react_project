@@ -8,7 +8,7 @@ import css from './Movies.module.css'
 import {useParams, useSearchParams} from "react-router-dom";
 import {genreActions,} from "../../redux/slices/GenreSlice";
 import {FindGenre} from "../FindGenre/FindGenre";
-
+// </ff>
 
 const Movies = ()=>{
 

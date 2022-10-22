@@ -44,7 +44,7 @@ export default function SearchMovies(props) {
                 {/*    {search.results?.map(movie => <Movie key={movie.id} movie={movie}/>)}*/}
                 {/*</div>*/}
 
-
+                {/*// </ff>*/}
 
             </div>
 

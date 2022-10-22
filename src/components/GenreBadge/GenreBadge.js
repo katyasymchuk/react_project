@@ -25,7 +25,7 @@ export default function GenreBadge({movie}) {
             }
         }
     )
-
+// </ff>
 
     // const {movies} = useSelector(state => state.movieReducer);
 

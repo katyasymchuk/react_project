@@ -12,3 +12,4 @@ export default function Genres({genre}) {
         </div>
     );
 }
+// </ff>

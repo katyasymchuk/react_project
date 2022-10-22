@@ -26,3 +26,4 @@ export default  function MoreInfoDetails({movie}) {
 		</div>
 	);
 }
+// </ff>
