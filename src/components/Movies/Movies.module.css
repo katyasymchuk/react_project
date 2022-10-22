@@ -1,0 +1,16 @@
+.movies{
+    display:flex;
+    flex-wrap: wrap;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+    margin-top: 25px;
+    margin-left: 140px;
+    margin-right: 140px;
+
+}
+.movies button{
+    background: red;
+    position: relative;
+
+}
