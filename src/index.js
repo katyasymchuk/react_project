@@ -7,13 +7,13 @@ import reportWebVitals from './reportWebVitals';
 import {Provider} from "react-redux";
 import {setupStore} from "./redux/store";
 import {unstable_HistoryRouter as BrowserRouter} from "react-router-dom";
-import {history} from "./services";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 const store = setupStore();
 root.render(
     <Provider store={store}>
-        <BrowserRouter history={history}>
+        <BrowserRouter>
         <App />
         </BrowserRouter>
     </Provider>
