@@ -1,18 +1,25 @@
 #light {
-    background-color: #f3ebf6;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(246,212,223,1) 0%, rgba(219,177,213,1) 100%);
 }
 
 #dark {
-    background-color: #46045e;
+    background-color: #280606;
 }
 #light .body {
-    background-color: #fff;
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(246,212,223,1) 0%, rgba(219,177,213,1) 100%);
 }
 
 #dark .body {
-    background-color: #38004c;
+    background-color: #280606;
 }
 .switch{
     position: relative;
-    left: 1200px;
+    color: #a25151;
+}
+.App{
+    align-items: center;
+    justify-content: center;
+    text-align: center;
 }

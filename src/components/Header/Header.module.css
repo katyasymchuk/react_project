@@ -16,14 +16,14 @@
 }
 .logo{
     position: relative;
-    color: #ff0000;
+    color: #ffffff;
     letter-spacing: 3px;
     display: inline-block;
     font-size: 15px;
     font-family: 'Russo One', sans-serif;
     font-variant: small-caps;
     transition: color 0.3s ease-in-out;
-    text-shadow: 1px 1px #fffcf5, 3px 3px;
+    text-shadow: 1px 1px #fffcf5, 1px 1px;
     margin-bottom: 20px;
 }
 .logo h3{
@@ -46,13 +46,13 @@
 }
 
 a{
-    color: #ff0000;
+    color: #ffffff;
     font-size: 20px;
     text-decoration: none;
     font-family: 'Russo One', sans-serif;
     font-variant: small-caps;
     transition: color 0.3s ease-in-out;
-    text-shadow: 1px 1px #fffcf5, 2px 2px;
+    text-shadow: 1px 1px #fffcf5, 1px 1px;
 }
 
 .InputGroup button,

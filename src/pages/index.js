@@ -1,2 +1,4 @@
+export * from './GenrePage/GenrePage';
+export * from './HomePage/HomePage';
 export * from './MoviesPage/MoviesPage';
-// </ff>
+export * from './NotFoundPage/NotFoundPage';

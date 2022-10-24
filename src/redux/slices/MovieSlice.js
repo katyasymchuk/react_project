@@ -1,16 +1,17 @@
 import {createSlice, createAsyncThunk} from "@reduxjs/toolkit";
-import {movieService} from "../../services";
-import {searchService} from "../../services/search.service";
 
+import {movieService} from "../../services";
 
 
 const initialState = {
     movies: [],
     leading: false,
     error: null,
-    movieFromAPI:null,
-    searchMovie:null
-    }
+    movieFromAPI: null,
+    searchMovie: null,
+    page: null,
+
+}
 
 const getAll = createAsyncThunk(
     'movieSlice/getAll',
@@ -35,40 +36,21 @@ const getById = createAsyncThunk(
         }
     }
 );
-const getByTitle = createAsyncThunk(
-    'movieSlice/getByTitle',
-    async (_, {rejectWithValue}) => {
+const getSearch = createAsyncThunk(
+    'movieSlice/getSearch',
+    async ({name, page}, {rejectWithValue}) => {
+
         try {
-            const {data} = await searchService.getAll();
+            const {data} = await movieService.getSearch(name, page)
             return data
         } catch (e) {
             return rejectWithValue(e.response.data)
+
         }
+
     }
 );
-// const getByGenre = createAsyncThunk(
-//     'movieSlice/getByGenre',
-//     async ({id}, {rejectWithValue}) => {
-//         try {
-//             const {data} = await movieService.getById(id);
-//             return data
-//         } catch (e) {
-//             return rejectWithValue(e.response.data)
-//         }
-//     }
-// );
 
-// const getByGenreId = createAsyncThunk(
-//     'movieSlice/getById',
-//     async ({id}, {rejectWithValue}) => {
-//         try {
-//             const {data} = await movieService.getByGenreId(id);
-//             return data
-//         } catch (e) {
-//             return rejectWithValue(e.response.data)
-//         }
-//     }
-// );
 const movieSlice = createSlice({
     name: 'movieSlice',
     initialState,
@@ -77,12 +59,33 @@ const movieSlice = createSlice({
             state.movies = action.payload
             state.loading = false
         })
-        .addCase(getById.fulfilled,(state, action) => {
+        .addCase(getById.fulfilled, (state, action) => {
             state.movieFromAPI = action.payload
         })
-        .addCase(getByTitle.fulfilled, (state, action) => {
+        .addCase(getSearch.fulfilled, (state, action) => {
             state.searchMovie = action.payload
             state.loading = false
+        })
+        .addCase(getAll.rejected, (state, action) => {
+            state.error = action.payload
+            state.loading = false
+        })
+        .addCase(getAll.pending, (state, action) => {
+            state.loading = true
+        })
+        .addCase(getById.rejected, (state, action) => {
+            state.error = action.payload
+            state.loading = false
+        })
+        .addCase(getById.pending, (state, action) => {
+            state.loading = true
+        })
+        .addCase(getSearch.rejected, (state, action) => {
+            state.error = action.payload
+            state.loading = false
+        })
+        .addCase(getSearch.pending, (state, action) => {
+            state.loading = true
         })
 
 })
@@ -92,9 +95,8 @@ const {reducer: movieReducer} = movieSlice;
 const movieActions = {
     getAll,
     getById,
-    getByTitle
+    getSearch
 
 }
 
 export {movieActions, movieReducer}
-// </ff>

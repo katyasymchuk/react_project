@@ -1,13 +1,11 @@
-import {GenresList} from "../../components/GenresList/GenresList";
-import {FindGenre} from "../../components/FindGenre/FindGenre";
+import {FindGenre} from "../../components";
 
-const GenrePage=() => {
+
+const GenrePage = () => {
     return (
         <div>
-            <GenresList/>
             <FindGenre/>
         </div>
     );
 }
 export {GenrePage}
-// </ff>

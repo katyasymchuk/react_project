@@ -1,6 +1,7 @@
 import axios from "axios";
-import {baseURL} from "../configs";
 import {createBrowserHistory} from "history";
+
+import {baseURL} from "../configs";
 
 
 export const API_KEY = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmZDBmNDdhNDNiMjhlNTMyOTQ3ZDAzMzM0ZTdjNWM0ZiIsInN1YiI6IjYzNGFiOTllMWIxZjNjMDA3YzBmNjA0NCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.API7vhEgYPI5qq1guSSHx7PE0wPiv74mrUvgOlKGUQo'
@@ -16,4 +17,3 @@ export {
     axiosService,
     history
 }
-// </ff>

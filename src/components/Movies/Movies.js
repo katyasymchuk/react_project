@@ -1,31 +1,25 @@
 import {useEffect} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useSearchParams} from "react-router-dom";
+
 
 import Movie from "../Movie/Movie";
-
-import {useDispatch, useSelector} from "react-redux";
-import {movieActions} from "../../redux";
 import css from './Movies.module.css'
-import {useParams, useSearchParams} from "react-router-dom";
-import {genreActions,} from "../../redux/slices/GenreSlice";
-import {FindGenre} from "../FindGenre/FindGenre";
-// </ff>
+import {movieActions} from "../../redux";
 
-const Movies = ()=>{
+
+const Movies = () => {
 
     const dispatch = useDispatch()
-        // const {id} = useParams();
-    const {movies} =  useSelector(state => state.movieReducer)
-    // const {genreFromAPI} =  useSelector(state => state.genreReducer)
-    const [queryMovie, setQueryMovie] = useSearchParams({page: '1'})
+
+    const {movies, error, loading} = useSelector(state => state.movieReducer)
+
+    const [queryMovie, setQueryMovie, page] = useSearchParams({page: '1'})
 
 
-    useEffect(()=>{
+    useEffect(() => {
         dispatch(movieActions.getAll())
-    },[])
-
-    // useEffect(() => {
-    //     dispatch(genreActions.getById({id}))
-    // }, [dispatch,id])
+    }, [])
 
     useEffect(() => {
         dispatch(movieActions.getAll(queryMovie.get('page')))
@@ -42,18 +36,18 @@ const Movies = ()=>{
         <div>
             <div className={css.movies}>
 
-
-                {movies.results?.map(movie=><Movie key={movie.id} movie={movie}/>)}
+                {loading && <p>Loading........................</p>}
+                {error && <p>Error</p>}
+                {movies.results?.map(movie => <Movie key={movie.id} movie={movie}/>)}
 
             </div>
 
 
+            <div className={css.Button}>
+                <button onClick={prevPage}><i className="fa-solid fa-chevron-left"></i></button>
 
-<div className={css.button}>
-    <button  onClick={prevPage}><i className="fa-solid fa-chevron-left"></i></button>
-
-    <button  onClick={nextPage}><i className="fa-solid fa-chevron-right"></i></button>
-</div>
+                <button onClick={nextPage}><i className="fa-solid fa-chevron-right"></i></button>
+            </div>
 
         </div>
     );

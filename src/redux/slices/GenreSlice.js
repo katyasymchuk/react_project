@@ -1,13 +1,15 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit";
 
-import {genreService} from "../../services/genre.service";
-import {movieService} from "../../services";
+
+import {genreService} from "../../services";
+
 
 const initialState = {
     genres: [],
     leading: false,
     error: null,
-    genreFromAPI:null
+    genreFromAPI: null,
+    queryPage: 1
 }
 
 const getAll = createAsyncThunk(
@@ -24,9 +26,9 @@ const getAll = createAsyncThunk(
 )
 const getById = createAsyncThunk(
     'genreSlice/getById',
-    async ({id}, {rejectWithValue}) => {
+    async ({id, page}, {rejectWithValue}) => {
         try {
-            const {data} = await genreService.getById(id);
+            const {data} = await genreService.getById(id, page);
             return data
         } catch (e) {
             return rejectWithValue(e.response.data)
@@ -52,11 +54,32 @@ const genreSlice = createSlice({
             state.genres = action.payload
             state.loading = false
         })
-        .addCase(getById.fulfilled,(state, action) => {
+        .addCase(getById.fulfilled, (state, action) => {
             state.genreFromAPI = action.payload
         })
-        .addCase(getByPage.fulfilled,(state, action) => {
+        .addCase(getByPage.fulfilled, (state, action) => {
             state.genreFromAPI = action.payload
+        })
+        .addCase(getAll.rejected, (state, action) => {
+            state.error = action.payload
+            state.loading = false
+        })
+        .addCase(getAll.pending, (state, action) => {
+            state.loading = true
+        })
+        .addCase(getById.rejected, (state, action) => {
+            state.error = action.payload
+            state.loading = false
+        })
+        .addCase(getById.pending, (state, action) => {
+            state.loading = true
+        })
+        .addCase(getByPage.rejected, (state, action) => {
+            state.error = action.payload
+            state.loading = false
+        })
+        .addCase(getByPage.pending, (state, action) => {
+            state.loading = true
         })
 
 })
@@ -69,5 +92,4 @@ const genreActions = {
 
 }
 
-export {genreActions,genreReducer}
-// </ff>
+export {genreActions, genreReducer}

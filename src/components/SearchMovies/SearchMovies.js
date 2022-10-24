@@ -1,16 +1,15 @@
-import css from "../Header/Header.module.css";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useState} from "react";
-import {movieActions} from "../../redux";
+import {useState} from "react";
 import {Link} from "react-router-dom";
-import Movie from "../Movie/Movie";
-import {searchActions} from "../../redux/slices/SearchSlice";
 
 
-export default function SearchMovies(props) {
+import css from "../Header/Header.module.css";
+
+export default function SearchMovies() {
     const dispatch = useDispatch;
-    const [value, setValue] = useState('')
-    const {search} = useSelector(state => state.searchReducer)
+    const {searchMovie} = useSelector(state => state.movieReducer)
+    const [query, setQuery] = useState("")
+
 
     // const filterMovies=movies.filter?(movies=>{movies.title.includes(value)
     // })
@@ -22,29 +21,21 @@ export default function SearchMovies(props) {
     return (
         <div>
             <div className={css.InputGroup}>
-                <form>
-
-                    <input
-                        type="text"
-                        placeholder="The name of the movie"
-                        onChange={(event) => setValue(event.target.value)}
-                        value={query}
-
+                <form className={css.search}>
+                    <input type="text"
+                           placeholder={"Search Movie"}
+                           className={css.searchTerm}
+                           value={query}
+                           onChange={event => setQuery(event.target.value)}
                     />
-
-                    <Link to={`/search/movie?query=${value}`}>
-                        <button className={css.unit}><i
-                            className="fa-solid fa-magnifying-glass"></i></button>
-                    </Link>
-
                 </form>
-                {/*onClick={() => dispatch(movieActions.getByTitle({value}))}*/}
-                {console.log(search)}
-                {/*<div className="movies">*/}
-                {/*    {search.results?.map(movie => <Movie key={movie.id} movie={movie}/>)}*/}
-                {/*</div>*/}
+                <Link to={`/search/movie?query=${query}`}>
+                    {/*<button className={css.unit} onClick={() => dispatch(movieActions.getSearch({name}))}>*/}
+                    <i className="fa-solid fa-magnifying-glass"></i>
+                    {/*</button>*/}
+                </Link>
+                {console.log(searchMovie)}
 
-                {/*// </ff>*/}
 
             </div>
 

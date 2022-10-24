@@ -1,0 +1,16 @@
+.details{
+    text-align: left;
+    /*width: 100%;*/
+    margin: 40px;
+    padding: 20px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 25px;
+}
+.details_details div{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(246,212,223,1) 0%, rgba(219,177,213,1) 100%);
+    border: 1px solid white;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+}

@@ -1,15 +1,14 @@
-
-import './App.css';
-
-import {MoviesPage} from "./pages";
-
-import {Route, Routes} from "react-router-dom";
-import {MainLayout} from "./layouts";
-import {MovieInfo} from "./components/MovieInfo/MovieInfo";
-import {GenrePage} from "./pages/GenrePage/GenrePage";
+import {Navigate, Route, Routes} from "react-router-dom";
 import {createContext, useState} from "react";
 import ReactSwitch from "react-switch";
-import SearchMovies from "./components/SearchMovies/SearchMovies";
+
+
+import './App.css';
+import {GenrePage, MoviesPage} from "./pages";
+import {MainLayout} from "./layouts";
+import {FindGenre, MovieInfo} from "./components";
+import HomePage from "./pages/HomePage/HomePage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 
 function App() {
@@ -20,7 +19,7 @@ function App() {
         setTheme((curr) => (curr === "light" ? "dark" : "light"));
     };
 
-    const ThemeContext =createContext(null)
+    const ThemeContext = createContext(null)
 
     return (
         <div>
@@ -29,13 +28,14 @@ function App() {
 
                     <Routes>
                         <Route path={'/'} element={<MainLayout/>}>
+                            <Route index element={<Navigate to={'home'}/>}/>
+                            <Route path={'home'} element={<HomePage/>}/>
                             <Route path={'/discover/movie'} element={<MoviesPage/>}/>
-                            {/*<Route path={`/discover/movie/with_genres=/:id`} element={<FindGenre/>}/>*/}
+                            <Route path={`/discover/movie/with_genres=:id`} element={<FindGenre/>}/>
                             <Route path={`/movie/:id`} element={<MovieInfo/>}/>
                             <Route path={`/genre/movie/list`} element={<GenrePage/>}/>
-                            <Route path={`/search/movie?query`} element={<SearchMovies/>}/>
-
-
+                            <Route path={`/search/movie`} element={<MoviesPage/>}/>
+                            <Route path={`*`} element={<NotFoundPage/>}/>
                         </Route>
                     </Routes>
                     <div className="switch">

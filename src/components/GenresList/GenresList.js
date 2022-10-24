@@ -1,9 +1,10 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect} from "react";
-import {genreActions} from "../../redux/slices/GenreSlice";
-import Genres from "../Genres/Genres";
+
+
 import css from './GenresList.module.css'
-import {FindGenre} from "../FindGenre/FindGenre";
+import {genreActions} from "../../redux";
+import Genres from "../Genres/Genres";
 
 
 const GenresList = () => {
@@ -22,11 +23,10 @@ const GenresList = () => {
         <div className={css.genres}>
 
 
-    {genres.genres?.map(genre => <Genres key={genre.id} genre={genre}/>)}
+            {genres.genres?.map(genre => <Genres key={genre.id} genre={genre}/>)}
 
 
         </div>
     );
 }
 export {GenresList}
-// </ff>

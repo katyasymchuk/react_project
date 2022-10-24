@@ -3,5 +3,12 @@
     align-items: center;
     justify-content: space-between;
     margin: 40px;
+
 }
-/*// </ff>*/
+.genres button{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(246,212,223,1) 0%, rgba(219,177,213,1) 100%);
+    border: 1px solid white;
+    border-radius: 5px;
+    font-family: 'Russo One', sans-serif;
+}

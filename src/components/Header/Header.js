@@ -1,10 +1,8 @@
 import {NavLink} from "react-router-dom";
-import css from './Header.module.css';
-import ReactSwitch from "react-switch";
-import {genreActions} from "../../redux/slices/GenreSlice";
-import {useDispatch} from "react-redux";
-import SearchMovies from "../SearchMovies/SearchMovies";
 
+
+import css from './Header.module.css';
+import SearchMovies from "../SearchMovies/SearchMovies";
 
 
 export default function Header() {
@@ -22,14 +20,8 @@ export default function Header() {
             <NavLink to={`/discover/movie`}>All Movies</NavLink>
             <NavLink to={`/genre/movie/list`}>Genres
             </NavLink>
-        <SearchMovies/>
-            {/*<div className={css.InputGroup}>*/}
-            {/*    <label>*/}
-            {/*        <input type="text" placeholder="The name of the movie"/>*/}
-            {/*    </label>*/}
-            {/*    <button className={css.unit} onClick={() => dispatch(genreActions.getById({id}))}>{name}><i className="fa-solid fa-magnifying-glass"></i></button>*/}
-            {/*</div>*/}
+            <SearchMovies/>
+
         </div>
     );
 }
-// </ff>
